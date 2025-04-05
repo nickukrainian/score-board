@@ -28,7 +28,7 @@ public class ScoreBoardApplication {
             command = scanner.nextLine();
             commands.add(command);
 
-            switch (command) {
+            switch (command.toLowerCase()) {
                 case START_COMMAND -> handleStartCommand(scanner, scoreBoard);
                 case FINISH_COMMAND -> handleFinishCommand(scanner, scoreBoard);
 
