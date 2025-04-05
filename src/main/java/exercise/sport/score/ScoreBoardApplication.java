@@ -11,6 +11,7 @@ public class ScoreBoardApplication {
     static String END_COMMAND = "exit";
 
     final static String START_COMMAND = "start";
+    final static String FINISH_COMMAND = "finish";
 
     static ScoreBoardService scoreBoardService = new ScoreBoardService();
 
@@ -31,6 +32,10 @@ public class ScoreBoardApplication {
                 case START_COMMAND:
                     handleStartCommand(scanner, scoreBoard);
                     break;
+                case FINISH_COMMAND:
+                    handleFinishCommand(scanner, scoreBoard);
+                    break;
+
             }
         }
         return commands;
@@ -45,5 +50,14 @@ public class ScoreBoardApplication {
         Match match = new Match(homeTeam, awayTeam);
         System.out.println(match);
         scoreBoardService.handleStartCommand(scoreBoard, match);
+    }
+
+    private static void handleFinishCommand(Scanner scanner, Map<Match, Score> scoreBoard) {
+        System.out.println("Home team: ");
+        String homeTeam = scanner.nextLine();
+        System.out.println("Away team: ");
+        String awayTeam = scanner.nextLine();
+        Match match = new Match(homeTeam, awayTeam);
+        scoreBoardService.handleFinishCommand(scoreBoard, match);
     }
 }

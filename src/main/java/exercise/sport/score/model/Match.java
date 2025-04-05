@@ -1,5 +1,7 @@
 package exercise.sport.score.model;
 
+import java.util.Objects;
+
 public class Match {
 
     String homeTeam;
@@ -33,5 +35,10 @@ public class Match {
     @Override
     public String toString() {
         return homeTeam + '-' + awayTeam;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(homeTeam, awayTeam);
     }
 }
