@@ -12,6 +12,11 @@ public class ScoreBoardService {
         printScoreBoard(scoreBoard);
     }
 
+    public void handleFinishCommand(Map<Match, Score> scoreBoard, Match match){
+        scoreBoard.remove(match);
+        printScoreBoard(scoreBoard);
+    }
+
     private void printScoreBoard(Map<Match, Score> scoreBoard) {
         scoreBoard.entrySet().forEach(
                 entry -> {
