@@ -26,6 +26,13 @@ class ScoreBoardServiceTest {
     }
 
     @Test
-    void name() {
+    void should_handle_finish_command() {
+        Map<Match, Score> scoreBoard = new LinkedHashMap<>();
+        Match match = new Match("A", "B");
+        service.handleStartCommand(scoreBoard, match);
+
+        service.handleFinishCommand(scoreBoard, match);
+
+        assertThat(scoreBoard).hasSize(0);
     }
 }
