@@ -14,7 +14,7 @@ class ScoreBoardServiceTest {
     ScoreBoardService service = new ScoreBoardService();
 
     @Test
-    void handleStartCommand() {
+    void should_handle_start_command() {
         Map<Match, Score> scoreBoard = new LinkedHashMap<>();
         Match match = new Match("A", "B");
         service.handleStartCommand(scoreBoard, match);
@@ -25,4 +25,7 @@ class ScoreBoardServiceTest {
         assertThat(scoreBoard.get(match)).isEqualTo(score);
     }
 
+    @Test
+    void name() {
+    }
 }
