@@ -24,17 +24,13 @@ public class ScoreBoardApplication {
         Map<Match, Score> scoreBoard = new LinkedHashMap<>();
         String command = "start";
         Scanner scanner = new Scanner(System.in);
-        while(!command.equalsIgnoreCase(END_COMMAND)) {
+        while (!command.equalsIgnoreCase(END_COMMAND)) {
             command = scanner.nextLine();
             commands.add(command);
 
             switch (command) {
-                case START_COMMAND:
-                    handleStartCommand(scanner, scoreBoard);
-                    break;
-                case FINISH_COMMAND:
-                    handleFinishCommand(scanner, scoreBoard);
-                    break;
+                case START_COMMAND -> handleStartCommand(scanner, scoreBoard);
+                case FINISH_COMMAND -> handleFinishCommand(scanner, scoreBoard);
 
             }
         }
@@ -42,7 +38,7 @@ public class ScoreBoardApplication {
     }
 
 
-    private static void handleStartCommand(Scanner scanner, Map<Match, Score> scoreBoard){
+    private static void handleStartCommand(Scanner scanner, Map<Match, Score> scoreBoard) {
         System.out.println("Home team: ");
         String homeTeam = scanner.nextLine();
         System.out.println("Away team: ");
