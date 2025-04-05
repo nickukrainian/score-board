@@ -1,5 +1,7 @@
 package exercise.sport.score.model;
 
+import java.util.Objects;
+
 public class Score {
 
     String homeScore;
@@ -33,5 +35,13 @@ public class Score {
     @Override
     public String toString() {
         return homeScore + '-' + awayScore;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Score score = (Score) o;
+        return Objects.equals(homeScore, score.homeScore) && Objects.equals(awayScore, score.awayScore);
     }
 }
