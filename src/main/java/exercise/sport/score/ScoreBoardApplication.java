@@ -10,6 +10,8 @@ public class ScoreBoardApplication {
 
     static String END_COMMAND = "exit";
 
+    final static String START_COMMAND = "start";
+
     static ScoreBoardService scoreBoardService = new ScoreBoardService();
 
     public static void main(String[] args) {
@@ -26,7 +28,7 @@ public class ScoreBoardApplication {
             commands.add(command);
 
             switch (command) {
-                case "start":
+                case START_COMMAND:
                     handleStartCommand(scanner, scoreBoard);
                     break;
             }
