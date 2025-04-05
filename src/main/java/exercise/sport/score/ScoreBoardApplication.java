@@ -1,12 +1,16 @@
 package exercise.sport.score;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import exercise.sport.score.model.Match;
+import exercise.sport.score.model.Score;
+import exercise.sport.score.service.ScoreBoardService;
+
+import java.util.*;
 
 public class ScoreBoardApplication {
 
     static String END_COMMAND = "exit";
+
+    static ScoreBoardService scoreBoardService = new ScoreBoardService();
 
     public static void main(String[] args) {
         startApplication();
@@ -14,12 +18,30 @@ public class ScoreBoardApplication {
 
     public static List<String> startApplication() {
         List<String> commands = new ArrayList<>();
+        Map<Match, Score> scoreBoard = new LinkedHashMap<>();
         String command = "start";
         Scanner scanner = new Scanner(System.in);
-        while(!command.equals(END_COMMAND)) {
+        while(!command.equalsIgnoreCase(END_COMMAND)) {
             command = scanner.nextLine();
             commands.add(command);
+
+            switch (command) {
+                case "start":
+                    handleStartCommand(scanner, scoreBoard);
+                    break;
+            }
         }
         return commands;
+    }
+
+
+    private static void handleStartCommand(Scanner scanner, Map<Match, Score> scoreBoard){
+        System.out.println("Home team: ");
+        String homeTeam = scanner.nextLine();
+        System.out.println("Away team: ");
+        String awayTeam = scanner.nextLine();
+        Match match = new Match(homeTeam, awayTeam);
+        System.out.println(match);
+        scoreBoardService.handleStartCommand(scoreBoard, match);
     }
 }
