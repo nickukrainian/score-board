@@ -3,7 +3,7 @@ package exercise.sport.score;
 /**
  * Hello world!
  */
-public class App {
+public class ScoreBoardApplication {
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
