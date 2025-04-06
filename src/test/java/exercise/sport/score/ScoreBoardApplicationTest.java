@@ -27,12 +27,11 @@ public class ScoreBoardApplicationTest {
 
         InputStream inputStream = System.in;
 
-        try{
+        try {
             System.setIn(new ByteArrayInputStream(String.join("\n", inputLines).getBytes()));
             List<String> actualLinesList = ScoreBoardApplication.startApplication();
             assertThat(actualLinesList).isEqualTo(expectedLinesList);
-        }
-        finally {
+        } finally {
             System.setIn(inputStream);
         }
 

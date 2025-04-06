@@ -72,24 +72,21 @@ public class ScoreBoardApplication {
         String homeScore = scanner.nextLine();
         try {
             verificationService.verifyScore(homeScore);
-        }
-        catch (IllegalArgumentException exception) {
+        } catch (IllegalArgumentException exception) {
             System.out.println("Invalid argument for home score");
         }
         System.out.println("Away score: ");
         String awayScore = scanner.nextLine();
         try {
             verificationService.verifyScore(awayScore);
-        }
-        catch (IllegalArgumentException exception) {
+        } catch (IllegalArgumentException exception) {
             System.out.println("Invalid argument for home score");
         }
         try {
             Match match = new Match(homeTeam, awayTeam);
             Score score = new Score(Integer.parseInt(homeScore), Integer.parseInt(awayScore));
             scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
-        }
-        catch (NumberFormatException exception) {
+        } catch (NumberFormatException exception) {
             System.out.println("Invalid score");
         }
 
