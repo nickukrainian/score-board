@@ -3,6 +3,7 @@ package exercise.sport.score;
 import exercise.sport.score.model.Match;
 import exercise.sport.score.model.Score;
 import exercise.sport.score.service.ScoreBoardService;
+import exercise.sport.score.service.VerificationService;
 
 import java.util.*;
 
@@ -16,6 +17,7 @@ public class ScoreBoardApplication {
     final static String TOTAL_COMMAND = "total";
 
     static ScoreBoardService scoreBoardService = new ScoreBoardService();
+    static VerificationService verificationService = new VerificationService();
 
     public static void main(String[] args) {
         startApplication();
@@ -68,8 +70,20 @@ public class ScoreBoardApplication {
         String awayTeam = scanner.nextLine();
         System.out.println("Home score: ");
         String homeScore = scanner.nextLine();
+        try {
+            verificationService.verifyScore(homeScore);
+        }
+        catch (IllegalArgumentException exception) {
+            System.out.println("Invalid argument for home score");
+        }
         System.out.println("Away score: ");
         String awayScore = scanner.nextLine();
+        try {
+            verificationService.verifyScore(awayScore);
+        }
+        catch (IllegalArgumentException exception) {
+            System.out.println("Invalid argument for home score");
+        }
         Match match = new Match(homeTeam, awayTeam);
         Score score = new Score(Integer.parseInt(homeScore), Integer.parseInt(awayScore));
         scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
