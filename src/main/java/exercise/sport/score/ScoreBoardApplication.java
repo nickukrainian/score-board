@@ -25,6 +25,7 @@ public class ScoreBoardApplication {
         Map<Match, Score> scoreBoard = new LinkedHashMap<>();
         String command = "start";
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Score board application");
         while (!command.equalsIgnoreCase(END_COMMAND)) {
             command = scanner.nextLine();
             commands.add(command);
