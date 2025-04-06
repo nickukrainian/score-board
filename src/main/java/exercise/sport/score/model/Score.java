@@ -4,37 +4,37 @@ import java.util.Objects;
 
 public class Score {
 
-    String homeScore;
+    Integer homeScore;
 
-    String awayScore;
+    Integer awayScore;
 
     public Score() {
     }
 
-    public Score(String homeScore, String awayScore) {
+    public Score(Integer homeScore, Integer awayScore) {
         this.homeScore = homeScore;
         this.awayScore = awayScore;
     }
 
-    public String getHomeScore() {
+    public Integer getHomeScore() {
         return homeScore;
     }
 
-    public void setHomeScore(String homeScore) {
+    public void setHomeScore(Integer homeScore) {
         this.homeScore = homeScore;
     }
 
-    public String getAwayScore() {
+    public Integer getAwayScore() {
         return awayScore;
     }
 
-    public void setAwayScore(String awayScore) {
+    public void setAwayScore(Integer awayScore) {
         this.awayScore = awayScore;
     }
 
     @Override
     public String toString() {
-        return homeScore + '-' + awayScore;
+        return homeScore.toString() + '-' + awayScore.toString();
     }
 
     @Override

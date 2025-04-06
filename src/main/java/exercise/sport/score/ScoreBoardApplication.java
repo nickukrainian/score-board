@@ -69,7 +69,7 @@ public class ScoreBoardApplication {
         System.out.println("Away score: ");
         String awayScore = scanner.nextLine();
         Match match = new Match(homeTeam, awayTeam);
-        Score score = new Score(homeScore, awayScore);
+        Score score = new Score(Integer.parseInt(homeScore), Integer.parseInt(awayScore));
         scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
     }
 }
