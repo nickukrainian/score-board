@@ -35,4 +35,17 @@ class ScoreBoardServiceTest {
 
         assertThat(scoreBoard).hasSize(0);
     }
+
+    @Test
+    void should_handle_update_command() {
+        Map<Match, Score> scoreBoard = new LinkedHashMap<>();
+        Match match = new Match("A", "B");
+        service.handleStartCommand(scoreBoard, match);
+
+        Score score = new Score("1", "0");
+
+        service.handleUpdateCommand(scoreBoard, match, score);
+
+        assertThat(scoreBoard.get(match)).isEqualTo(score);
+    }
 }

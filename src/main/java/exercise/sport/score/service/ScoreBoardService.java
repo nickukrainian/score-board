@@ -17,6 +17,10 @@ public class ScoreBoardService {
         printScoreBoard(scoreBoard);
     }
 
+    public void handleUpdateCommand(Map<Match, Score> scoreBoard, Match match, Score score) {
+
+    }
+
     private void printScoreBoard(Map<Match, Score> scoreBoard) {
         scoreBoard.entrySet().forEach(
                 entry -> {
