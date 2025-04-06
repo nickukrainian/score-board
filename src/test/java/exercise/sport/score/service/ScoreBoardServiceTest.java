@@ -48,4 +48,21 @@ class ScoreBoardServiceTest {
 
         assertThat(scoreBoard.get(match)).isEqualTo(score);
     }
+
+    @Test
+    void should_handle_total_command() {
+        Map<Match, Score> scoreBoard = new LinkedHashMap<>();
+        scoreBoard.put(new Match("A", "B"), new Score("1", "2"));
+        scoreBoard.put(new Match("C", "D"), new Score("5", "5"));
+        scoreBoard.put(new Match("E", "F"), new Score("8", "2"));
+
+        Map<Match, Score> expectedScoreBoard = new LinkedHashMap<>();
+        expectedScoreBoard.put(new Match("C", "D"), new Score("5", "5"));
+        expectedScoreBoard.put(new Match("E", "F"), new Score("8", "2"));
+        expectedScoreBoard.put(new Match("A", "B"), new Score("1", "2"));
+
+        Map<Match, Score> actualScoreBoard = service.handleTotalCommand(scoreBoard);
+
+        assertThat(actualScoreBoard).containsExactlyEntriesOf(expectedScoreBoard);
+    }
 }

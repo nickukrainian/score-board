@@ -3,6 +3,7 @@ package exercise.sport.score.service;
 import exercise.sport.score.model.Match;
 import exercise.sport.score.model.Score;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ScoreBoardService {
@@ -20,6 +21,10 @@ public class ScoreBoardService {
     public void handleUpdateCommand(Map<Match, Score> scoreBoard, Match match, Score score) {
         scoreBoard.put(match, score);
         printScoreBoard(scoreBoard);
+    }
+
+    public Map<Match, Score> handleTotalCommand(Map<Match, Score> scoreBoard) {
+        return new LinkedHashMap<>();
     }
 
     private void printScoreBoard(Map<Match, Score> scoreBoard) {
