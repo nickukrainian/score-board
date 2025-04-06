@@ -13,6 +13,7 @@ public class ScoreBoardApplication {
     final static String START_COMMAND = "start";
     final static String FINISH_COMMAND = "finish";
     final static String UPDATE_COMMAND = "update";
+    final static String TOTAL_COMMAND = "total";
 
     static ScoreBoardService scoreBoardService = new ScoreBoardService();
 
@@ -34,6 +35,7 @@ public class ScoreBoardApplication {
                 case START_COMMAND -> handleStartCommand(scanner, scoreBoard);
                 case FINISH_COMMAND -> handleFinishCommand(scanner, scoreBoard);
                 case UPDATE_COMMAND -> handleUpdateCommand(scanner, scoreBoard);
+                case TOTAL_COMMAND -> handleTotalCommand(scoreBoard);
             }
         }
         return commands;
@@ -71,5 +73,15 @@ public class ScoreBoardApplication {
         Match match = new Match(homeTeam, awayTeam);
         Score score = new Score(Integer.parseInt(homeScore), Integer.parseInt(awayScore));
         scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
+    }
+
+    private static void handleTotalCommand(Map<Match, Score> scoreBoard) {
+        Map<Match, Score> sortedScoreBoard = scoreBoardService.handleTotalCommand(scoreBoard);
+        sortedScoreBoard.entrySet().forEach(
+                entry -> {
+                    System.out.println(entry.getKey().toString() + ":" + entry.getValue().toString());
+                }
+        );
+
     }
 }
