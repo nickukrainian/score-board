@@ -84,9 +84,15 @@ public class ScoreBoardApplication {
         catch (IllegalArgumentException exception) {
             System.out.println("Invalid argument for home score");
         }
-        Match match = new Match(homeTeam, awayTeam);
-        Score score = new Score(Integer.parseInt(homeScore), Integer.parseInt(awayScore));
-        scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
+        try {
+            Match match = new Match(homeTeam, awayTeam);
+            Score score = new Score(Integer.parseInt(homeScore), Integer.parseInt(awayScore));
+            scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
+        }
+        catch (NumberFormatException exception) {
+            System.out.println("Invalid score");
+        }
+
     }
 
     private static void handleTotalCommand(Map<Match, Score> scoreBoard) {
