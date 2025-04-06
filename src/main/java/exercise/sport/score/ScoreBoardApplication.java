@@ -12,6 +12,7 @@ public class ScoreBoardApplication {
 
     final static String START_COMMAND = "start";
     final static String FINISH_COMMAND = "finish";
+    final static String UPDATE_COMMAND = "update";
 
     static ScoreBoardService scoreBoardService = new ScoreBoardService();
 
@@ -31,7 +32,7 @@ public class ScoreBoardApplication {
             switch (command.toLowerCase()) {
                 case START_COMMAND -> handleStartCommand(scanner, scoreBoard);
                 case FINISH_COMMAND -> handleFinishCommand(scanner, scoreBoard);
-
+                case UPDATE_COMMAND -> handleUpdateCommand(scanner, scoreBoard);
             }
         }
         return commands;
@@ -55,5 +56,19 @@ public class ScoreBoardApplication {
         String awayTeam = scanner.nextLine();
         Match match = new Match(homeTeam, awayTeam);
         scoreBoardService.handleFinishCommand(scoreBoard, match);
+    }
+
+    private static void handleUpdateCommand(Scanner scanner, Map<Match, Score> scoreBoard) {
+        System.out.println("Home team: ");
+        String homeTeam = scanner.nextLine();
+        System.out.println("Away team: ");
+        String awayTeam = scanner.nextLine();
+        System.out.println("Home score: ");
+        String homeScore = scanner.nextLine();
+        System.out.println("Away score: ");
+        String awayScore = scanner.nextLine();
+        Match match = new Match(homeTeam, awayTeam);
+        Score score = new Score(homeScore, awayScore);
+        scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
     }
 }

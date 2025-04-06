@@ -38,6 +38,14 @@ public class Match {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Match match = (Match) o;
+        return Objects.equals(homeTeam, match.homeTeam) && Objects.equals(awayTeam, match.awayTeam);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(homeTeam, awayTeam);
     }
