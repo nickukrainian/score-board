@@ -18,7 +18,8 @@ public class ScoreBoardService {
     }
 
     public void handleUpdateCommand(Map<Match, Score> scoreBoard, Match match, Score score) {
-
+        scoreBoard.put(match, score);
+        printScoreBoard(scoreBoard);
     }
 
     private void printScoreBoard(Map<Match, Score> scoreBoard) {
