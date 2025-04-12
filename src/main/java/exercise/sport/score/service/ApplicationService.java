@@ -22,7 +22,7 @@ public class ApplicationService {
         this.verificationService = verificationService;
     }
 
-    public List<String> runApplication(){
+    public List<String> runApplication() {
         List<String> commands = new ArrayList<>();
         Map<Match, Score> scoreBoard = new LinkedHashMap<>();
         String command = "start";
@@ -66,26 +66,21 @@ public class ApplicationService {
         String homeTeam = scanner.nextLine();
         System.out.println("Away team: ");
         String awayTeam = scanner.nextLine();
-        System.out.println("Home score: ");
-        String homeScore = scanner.nextLine();
         try {
+            System.out.println("Home score: ");
+            String homeScore = scanner.nextLine();
             verificationService.verifyScore(homeScore);
-        } catch (IllegalArgumentException exception) {
-            System.out.println("Invalid argument for home score");
-        }
-        System.out.println("Away score: ");
-        String awayScore = scanner.nextLine();
-        try {
+
+            System.out.println("Away score: ");
+            String awayScore = scanner.nextLine();
+
             verificationService.verifyScore(awayScore);
-        } catch (IllegalArgumentException exception) {
-            System.out.println("Invalid argument for home score");
-        }
-        try {
+
             Match match = new Match(homeTeam, awayTeam);
             Score score = new Score(Integer.parseInt(homeScore), Integer.parseInt(awayScore));
             scoreBoardService.handleUpdateCommand(scoreBoard, match, score);
-        } catch (NumberFormatException exception) {
-            System.out.println("Invalid score");
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
         }
 
     }
