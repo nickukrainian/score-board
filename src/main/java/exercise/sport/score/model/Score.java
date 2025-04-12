@@ -8,27 +8,8 @@ public class Score {
 
     Integer awayScore;
 
-    public Score() {
-    }
-
     public Score(Integer homeScore, Integer awayScore) {
         this.homeScore = homeScore;
-        this.awayScore = awayScore;
-    }
-
-    public Integer getHomeScore() {
-        return homeScore;
-    }
-
-    public void setHomeScore(Integer homeScore) {
-        this.homeScore = homeScore;
-    }
-
-    public Integer getAwayScore() {
-        return awayScore;
-    }
-
-    public void setAwayScore(Integer awayScore) {
         this.awayScore = awayScore;
     }
 
