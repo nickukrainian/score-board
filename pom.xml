@@ -6,6 +6,7 @@
   <groupId>exercise.sport</groupId>
   <artifactId>score-board</artifactId>
   <version>1.0</version>
+  <packaging>jar</packaging>
 
   <name>score-board</name>
 
